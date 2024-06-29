@@ -9,6 +9,7 @@ import OSTable from 'components/metrics/OSTable';
 import PagesTable from 'components/metrics/PagesTable';
 import QueryParametersTable from 'components/metrics/QueryParametersTable';
 import ReferrersTable from 'components/metrics/ReferrersTable';
+import HostsTable from 'components/metrics/HostsTable';
 import ScreenTable from 'components/metrics/ScreenTable';
 import EventsTable from 'components/metrics/EventsTable';
 import SideNav from 'components/layout/SideNav';
@@ -18,8 +19,11 @@ import styles from './WebsiteExpandedView.module.css';
 
 const views = {
   url: PagesTable,
+  entry: PagesTable,
+  exit: PagesTable,
   title: PagesTable,
   referrer: ReferrersTable,
+  host: HostsTable,
   browser: BrowsersTable,
   os: OSTable,
   device: DevicesTable,
@@ -44,7 +48,6 @@ export default function WebsiteExpandedView({
   const {
     router,
     renderUrl,
-    pathname,
     query: { view },
   } = useNavigation();
 
@@ -109,6 +112,11 @@ export default function WebsiteExpandedView({
       label: formatMessage(labels.queryParameters),
       url: renderUrl({ view: 'query' }),
     },
+    {
+      key: 'host',
+      label: formatMessage(labels.hosts),
+      url: renderUrl({ view: 'host' }),
+    },
   ];
 
   const DetailsComponent = views[view] || (() => null);
@@ -122,7 +130,12 @@ export default function WebsiteExpandedView({
   return (
     <div className={styles.layout}>
       <div className={styles.menu}>
-        <LinkButton href={pathname} className={styles.back} variant="quiet" scroll={false}>
+        <LinkButton
+          href={renderUrl({ view: undefined })}
+          className={styles.back}
+          variant="quiet"
+          scroll={false}
+        >
           <Icon rotate={dir === 'rtl' ? 0 : 180}>
             <Icons.ArrowRight />
           </Icon>

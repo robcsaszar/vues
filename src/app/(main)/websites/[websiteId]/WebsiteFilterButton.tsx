@@ -1,53 +1,57 @@
 import { Button, Icon, Icons, Popup, PopupTrigger, Text } from 'react-basics';
 import PopupForm from 'app/(main)/reports/[reportId]/PopupForm';
 import FilterSelectForm from 'app/(main)/reports/[reportId]/FilterSelectForm';
-import { useMessages, useNavigation } from 'components/hooks';
+import { useFields, useMessages, useNavigation, useDateRange } from 'components/hooks';
+import { OPERATOR_PREFIXES } from 'lib/constants';
+import styles from './WebsiteFilterButton.module.css';
 
 export function WebsiteFilterButton({
   websiteId,
   className,
+  position = 'bottom',
+  alignment = 'end',
+  showText = true,
 }: {
   websiteId: string;
   className?: string;
+  position?: 'bottom' | 'top' | 'left' | 'right';
+  alignment?: 'end' | 'center' | 'start';
+  showText?: boolean;
 }) {
   const { formatMessage, labels } = useMessages();
   const { renderUrl, router } = useNavigation();
+  const { fields } = useFields();
+  const {
+    dateRange: { startDate, endDate },
+  } = useDateRange(websiteId);
 
-  const fieldOptions = [
-    { name: 'url', type: 'string', label: formatMessage(labels.url) },
-    { name: 'referrer', type: 'string', label: formatMessage(labels.referrer) },
-    { name: 'browser', type: 'string', label: formatMessage(labels.browser) },
-    { name: 'os', type: 'string', label: formatMessage(labels.os) },
-    { name: 'device', type: 'string', label: formatMessage(labels.device) },
-    { name: 'country', type: 'string', label: formatMessage(labels.country) },
-    { name: 'region', type: 'string', label: formatMessage(labels.region) },
-    { name: 'city', type: 'string', label: formatMessage(labels.city) },
-  ];
+  const handleAddFilter = ({ name, operator, value }) => {
+    const prefix = OPERATOR_PREFIXES[operator];
 
-  const handleAddFilter = ({ name, value }) => {
-    router.push(renderUrl({ [name]: value }));
+    router.push(renderUrl({ [name]: prefix + value }));
   };
 
   return (
-    <PopupTrigger>
-      <Button className={className}>
+    <PopupTrigger className={className}>
+      <Button className={styles.button} variant="quiet">
         <Icon>
           <Icons.Plus />
         </Icon>
-        <Text>{formatMessage(labels.filter)}</Text>
+        {showText && <Text>{formatMessage(labels.filter)}</Text>}
       </Button>
-      <Popup position="bottom" alignment="start">
+      <Popup position={position} alignment={alignment}>
         {(close: () => void) => {
           return (
             <PopupForm>
               <FilterSelectForm
                 websiteId={websiteId}
-                items={fieldOptions}
-                onSelect={value => {
+                fields={fields}
+                startDate={startDate}
+                endDate={endDate}
+                onChange={value => {
                   handleAddFilter(value);
                   close();
                 }}
-                allowFilterSelect={false}
               />
             </PopupForm>
           );

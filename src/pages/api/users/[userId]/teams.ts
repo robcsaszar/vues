@@ -1,19 +1,13 @@
 import * as yup from 'yup';
 import { useAuth, useCors, useValidate } from 'lib/middleware';
-import { NextApiRequestQueryBody, SearchFilter } from 'lib/types';
+import { NextApiRequestQueryBody, PageParams } from 'lib/types';
 import { pageInfo } from 'lib/schema';
 import { NextApiResponse } from 'next';
 import { methodNotAllowed, ok, unauthorized } from 'next-basics';
 import { getUserTeams } from 'queries';
 
-export interface UserTeamsRequestQuery extends SearchFilter {
+export interface UserTeamsRequestQuery extends PageParams {
   userId: string;
-}
-
-export interface UserTeamsRequestBody {
-  name: string;
-  domain: string;
-  shareId: string;
 }
 
 const schema = {
@@ -24,7 +18,7 @@ const schema = {
 };
 
 export default async (
-  req: NextApiRequestQueryBody<UserTeamsRequestQuery, UserTeamsRequestBody>,
+  req: NextApiRequestQueryBody<UserTeamsRequestQuery, any>,
   res: NextApiResponse,
 ) => {
   await useCors(req, res);

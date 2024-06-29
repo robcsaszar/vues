@@ -3,12 +3,13 @@ import dateFormat from 'dateformat';
 import debug from 'debug';
 import { CLICKHOUSE } from 'lib/db';
 import { QueryFilters, QueryOptions } from './types';
-import { FILTER_COLUMNS, OPERATORS } from './constants';
-import { loadWebsite } from './load';
+import { OPERATORS } from './constants';
+import { fetchWebsite } from './load';
 import { maxDate } from './date';
+import { filtersToArray } from './params';
 
 export const CLICKHOUSE_DATE_FORMATS = {
-  minute: '%Y-%m-%d %H:%M:00',
+  minute: '%Y-%m-%d %H:%i:00',
   hour: '%Y-%m-%d %H:00:00',
   day: '%Y-%m-%d',
   month: '%Y-%m-01',
@@ -61,27 +62,27 @@ function getDateFormat(date: Date) {
   return `'${dateFormat(date, 'UTC:yyyy-mm-dd HH:MM:ss')}'`;
 }
 
-function mapFilter(column: string, filter: string, name: string, type: string = 'String') {
-  switch (filter) {
+function mapFilter(column: string, operator: string, name: string, type: string = 'String') {
+  const value = `{${name}:${type}}`;
+
+  switch (operator) {
     case OPERATORS.equals:
-      return `${column} = {${name}:${type}}`;
+      return `${column} = ${value}`;
     case OPERATORS.notEquals:
-      return `${column} != {${name}:${type}}`;
+      return `${column} != ${value}`;
     case OPERATORS.contains:
-      return `positionCaseInsensitive(${column}, {${name}:${type}}) > 0`;
+      return `positionCaseInsensitive(${column}, ${value}) > 0`;
+    case OPERATORS.doesNotContain:
+      return `positionCaseInsensitive(${column}, ${value}) = 0`;
     default:
       return '';
   }
 }
 
 function getFilterQuery(filters: QueryFilters = {}, options: QueryOptions = {}) {
-  const query = Object.keys(filters).reduce((arr, name) => {
-    const value = filters[name];
-    const filter = value?.filter ?? OPERATORS.equals;
-    const column = value?.column ?? FILTER_COLUMNS[name] ?? options?.columns?.[name];
-
-    if (value !== undefined && column !== undefined) {
-      arr.push(`and ${mapFilter(column, filter, name)}`);
+  const query = filtersToArray(filters, options).reduce((arr, { name, column, operator }) => {
+    if (column) {
+      arr.push(`and ${mapFilter(column, operator, name)}`);
 
       if (name === 'referrer') {
         arr.push('and referrer_domain != {websiteDomain:String}');
@@ -94,23 +95,23 @@ function getFilterQuery(filters: QueryFilters = {}, options: QueryOptions = {}) 
   return query.join('\n');
 }
 
-function normalizeFilters(filters = {}) {
-  return Object.keys(filters).reduce((obj, key) => {
-    const value = filters[key];
-
-    obj[key] = value?.value ?? value;
+function getFilterParams(filters: QueryFilters = {}) {
+  return filtersToArray(filters).reduce((obj, { name, value }) => {
+    if (name && value !== undefined) {
+      obj[name] = value;
+    }
 
     return obj;
   }, {});
 }
 
 async function parseFilters(websiteId: string, filters: QueryFilters = {}, options?: QueryOptions) {
-  const website = await loadWebsite(websiteId);
+  const website = await fetchWebsite(websiteId);
 
   return {
     filterQuery: getFilterQuery(filters, options),
     params: {
-      ...normalizeFilters(filters),
+      ...getFilterParams(filters),
       websiteId,
       startDate: maxDate(filters.startDate, new Date(website?.resetAt)),
       websiteDomain: website.domain,
@@ -118,7 +119,10 @@ async function parseFilters(websiteId: string, filters: QueryFilters = {}, optio
   };
 }
 
-async function rawQuery(query: string, params: Record<string, unknown> = {}): Promise<unknown> {
+async function rawQuery<T = unknown>(
+  query: string,
+  params: Record<string, unknown> = {},
+): Promise<T> {
   if (process.env.LOG_QUERY) {
     log('QUERY:\n', query);
     log('PARAMETERS:\n', params);

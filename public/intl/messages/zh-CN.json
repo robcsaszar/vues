@@ -32,7 +32,13 @@
   "label.add-member": [
     {
       "type": 0,
-      "value": "Add member"
+      "value": "添加成员"
+    }
+  ],
+  "label.add-step": [
+    {
+      "type": 0,
+      "value": "添加步骤"
     }
   ],
   "label.add-website": [
@@ -75,12 +81,6 @@
     {
       "type": 0,
       "value": "平均"
-    }
-  ],
-  "label.average-visit-time": [
-    {
-      "type": 0,
-      "value": "平均访问时间"
     }
   ],
   "label.back": [
@@ -149,6 +149,12 @@
       "value": "清除全部"
     }
   ],
+  "label.compare": [
+    {
+      "type": 0,
+      "value": "Compare"
+    }
+  ],
   "label.confirm": [
     {
       "type": 0,
@@ -171,6 +177,12 @@
     {
       "type": 0,
       "value": "继续"
+    }
+  ],
+  "label.count": [
+    {
+      "type": 0,
+      "value": "Count"
     }
   ],
   "label.countries": [
@@ -213,6 +225,18 @@
     {
       "type": 0,
       "value": "已创建"
+    }
+  ],
+  "label.created-by": [
+    {
+      "type": 0,
+      "value": "创建者"
+    }
+  ],
+  "label.current": [
+    {
+      "type": 0,
+      "value": "Current"
     }
   ],
   "label.current-password": [
@@ -272,7 +296,7 @@
   "label.delete-report": [
     {
       "type": 0,
-      "value": "Delete report"
+      "value": "删除报告"
     }
   ],
   "label.delete-team": [
@@ -362,13 +386,25 @@
   "label.edit-member": [
     {
       "type": 0,
-      "value": "Edit member"
+      "value": "编辑成员"
     }
   ],
   "label.enable-share-url": [
     {
       "type": 0,
       "value": "启用共享链接"
+    }
+  ],
+  "label.end-step": [
+    {
+      "type": 0,
+      "value": "End Step"
+    }
+  ],
+  "label.entry": [
+    {
+      "type": 0,
+      "value": "Entry URL"
     }
   ],
   "label.event": [
@@ -387,6 +423,12 @@
     {
       "type": 0,
       "value": "行为类别"
+    }
+  ],
+  "label.exit": [
+    {
+      "type": 0,
+      "value": "Exit URL"
     }
   ],
   "label.false": [
@@ -443,6 +485,24 @@
       "value": "了解用户的转换率和退出率。"
     }
   ],
+  "label.goal": [
+    {
+      "type": 0,
+      "value": "Goal"
+    }
+  ],
+  "label.goals": [
+    {
+      "type": 0,
+      "value": "Goals"
+    }
+  ],
+  "label.goals-description": [
+    {
+      "type": 0,
+      "value": "Track your goals for pageviews and events."
+    }
+  ],
   "label.greater-than": [
     {
       "type": 0,
@@ -453,6 +513,18 @@
     {
       "type": 0,
       "value": "大于或等于"
+    }
+  ],
+  "label.host": [
+    {
+      "type": 0,
+      "value": "Host"
+    }
+  ],
+  "label.hosts": [
+    {
+      "type": 0,
+      "value": "Hosts"
     }
   ],
   "label.insights": [
@@ -503,6 +575,18 @@
       "value": "加入团队"
     }
   ],
+  "label.journey": [
+    {
+      "type": 0,
+      "value": "Journey"
+    }
+  ],
+  "label.journey-description": [
+    {
+      "type": 0,
+      "value": "Understand how users nagivate through your website."
+    }
+  ],
   "label.language": [
     {
       "type": 0,
@@ -549,6 +633,20 @@
       "value": " 小时"
     }
   ],
+  "label.last-months": [
+    {
+      "type": 0,
+      "value": "最近 "
+    },
+    {
+      "type": 1,
+      "value": "x"
+    },
+    {
+      "type": 0,
+      "value": " 个月"
+    }
+  ],
   "label.leave": [
     {
       "type": 0,
@@ -588,7 +686,13 @@
   "label.manage": [
     {
       "type": 0,
-      "value": "Manage"
+      "value": "管理"
+    }
+  ],
+  "label.manager": [
+    {
+      "type": 0,
+      "value": "Manager"
     }
   ],
   "label.max": [
@@ -600,7 +704,7 @@
   "label.member": [
     {
       "type": 0,
-      "value": "Member"
+      "value": "成员"
     }
   ],
   "label.members": [
@@ -630,7 +734,7 @@
   "label.my-account": [
     {
       "type": 0,
-      "value": "My account"
+      "value": "我的账户"
     }
   ],
   "label.my-websites": [
@@ -700,7 +804,7 @@
   "label.os": [
     {
       "type": 0,
-      "value": "OS"
+      "value": "操作系统"
     }
   ],
   "label.overview": [
@@ -718,7 +822,7 @@
   "label.page-of": [
     {
       "type": 0,
-      "value": "总"
+      "value": "总 "
     },
     {
       "type": 1,
@@ -726,7 +830,7 @@
     },
     {
       "type": 0,
-      "value": "中的第"
+      "value": " 中的第 "
     },
     {
       "type": 1,
@@ -734,7 +838,7 @@
     },
     {
       "type": 0,
-      "value": "页"
+      "value": " 页"
     }
   ],
   "label.page-views": [
@@ -775,10 +879,34 @@
       "value": " 提供支持"
     }
   ],
+  "label.previous": [
+    {
+      "type": 0,
+      "value": "Previous"
+    }
+  ],
+  "label.previous-period": [
+    {
+      "type": 0,
+      "value": "Previous period"
+    }
+  ],
+  "label.previous-year": [
+    {
+      "type": 0,
+      "value": "Previous year"
+    }
+  ],
   "label.profile": [
     {
       "type": 0,
       "value": "个人资料"
+    }
+  ],
+  "label.property": [
+    {
+      "type": 0,
+      "value": "Property"
     }
   ],
   "label.queries": [
@@ -850,7 +978,7 @@
   "label.remove-member": [
     {
       "type": 0,
-      "value": "Remove member"
+      "value": "移除成员"
     }
   ],
   "label.reports": [
@@ -922,7 +1050,7 @@
   "label.select": [
     {
       "type": 0,
-      "value": "Select"
+      "value": "选择"
     }
   ],
   "label.select-date": [
@@ -934,7 +1062,7 @@
   "label.select-role": [
     {
       "type": 0,
-      "value": "Select role"
+      "value": "选择角色"
     }
   ],
   "label.select-website": [
@@ -967,6 +1095,18 @@
       "value": "单日"
     }
   ],
+  "label.start-step": [
+    {
+      "type": 0,
+      "value": "Start Step"
+    }
+  ],
+  "label.steps": [
+    {
+      "type": 0,
+      "value": "步骤"
+    }
+  ],
   "label.sum": [
     {
       "type": 0,
@@ -991,6 +1131,12 @@
       "value": "团队 ID"
     }
   ],
+  "label.team-manager": [
+    {
+      "type": 0,
+      "value": "Team manager"
+    }
+  ],
   "label.team-member": [
     {
       "type": 0,
@@ -1012,7 +1158,7 @@
   "label.team-view-only": [
     {
       "type": 0,
-      "value": "Team view only"
+      "value": "仅团队视图"
     }
   ],
   "label.team-websites": [
@@ -1096,13 +1242,13 @@
   "label.transfer": [
     {
       "type": 0,
-      "value": "Transfer"
+      "value": "转移"
     }
   ],
   "label.transfer-website": [
     {
       "type": 0,
-      "value": "Transfer website"
+      "value": "转移网站"
     }
   ],
   "label.true": [
@@ -1141,6 +1287,12 @@
       "value": "未命名"
     }
   ],
+  "label.update": [
+    {
+      "type": 0,
+      "value": "更新"
+    }
+  ],
   "label.url": [
     {
       "type": 0,
@@ -1169,6 +1321,18 @@
     {
       "type": 0,
       "value": "用户"
+    }
+  ],
+  "label.utm": [
+    {
+      "type": 0,
+      "value": "UTM"
+    }
+  ],
+  "label.utm-description": [
+    {
+      "type": 0,
+      "value": "通过UTM参数追踪您的广告活动。"
     }
   ],
   "label.value": [
@@ -1201,10 +1365,28 @@
       "value": "浏览量"
     }
   ],
+  "label.views-per-visit": [
+    {
+      "type": 0,
+      "value": "每次访问的浏览量"
+    }
+  ],
+  "label.visit-duration": [
+    {
+      "type": 0,
+      "value": "平均访问时间"
+    }
+  ],
   "label.visitors": [
     {
       "type": 0,
       "value": "访客"
+    }
+  ],
+  "label.visits": [
+    {
+      "type": 0,
+      "value": "访问次数"
     }
   ],
   "label.website": [
@@ -1240,7 +1422,7 @@
   "message.action-confirmation": [
     {
       "type": 0,
-      "value": "Type "
+      "value": "在下面的框中输入 "
     },
     {
       "type": 1,
@@ -1248,7 +1430,7 @@
     },
     {
       "type": 0,
-      "value": " in the box below to confirm."
+      "value": " 以确认。"
     }
   ],
   "message.active-users": [
@@ -1263,6 +1445,12 @@
     {
       "type": 0,
       "value": " 人"
+    }
+  ],
+  "message.collected-data": [
+    {
+      "type": 0,
+      "value": "Collected data"
     }
   ],
   "message.confirm-delete": [
@@ -1296,7 +1484,7 @@
   "message.confirm-remove": [
     {
       "type": 0,
-      "value": "Are you sure you want to remove "
+      "value": "您确定要移除 "
     },
     {
       "type": 1,
@@ -1304,7 +1492,7 @@
     },
     {
       "type": 0,
-      "value": "?"
+      "value": " ？"
     }
   ],
   "message.confirm-reset": [
@@ -1318,13 +1506,13 @@
     },
     {
       "type": 0,
-      "value": " 的数据吗?"
+      "value": " 的数据吗？"
     }
   ],
   "message.delete-team-warning": [
     {
       "type": 0,
-      "value": "Deleting a team will also delete all team websites."
+      "value": "删除团队也会删除所有团队的网站。"
     }
   ],
   "message.delete-website-warning": [
@@ -1346,7 +1534,7 @@
     },
     {
       "type": 0,
-      "value": "上的"
+      "value": " 上的 "
     },
     {
       "type": 1,
@@ -1388,7 +1576,7 @@
   "message.new-version-available": [
     {
       "type": 0,
-      "value": "Umami的新版本"
+      "value": "Umami 的新版本 "
     },
     {
       "type": 1,
@@ -1396,7 +1584,7 @@
     },
     {
       "type": 0,
-      "value": "已推出！"
+      "value": " 已推出！"
     }
   ],
   "message.no-data-available": [
@@ -1456,7 +1644,7 @@
   "message.reset-website": [
     {
       "type": 0,
-      "value": "如果确定重置该网站, 请在下面的输入框中输入 "
+      "value": "如果确定重置该网站，请在下面的输入框中输入 "
     },
     {
       "type": 1,
@@ -1520,25 +1708,25 @@
   "message.transfer-team-website-to-user": [
     {
       "type": 0,
-      "value": "Transfer this website to your account?"
+      "value": "将该网站转入您的账户？"
     }
   ],
   "message.transfer-user-website-to-team": [
     {
       "type": 0,
-      "value": "Select the team to transfer this website to."
+      "value": "选择要将该网站转移到哪个团队。"
     }
   ],
   "message.transfer-website": [
     {
       "type": 0,
-      "value": "Transfer website ownership to your account or another team."
+      "value": "将网站所有权转移到您的账户或其他团队。"
     }
   ],
   "message.triggered-event": [
     {
       "type": 0,
-      "value": "Triggered event"
+      "value": "触发事件"
     }
   ],
   "message.user-deleted": [
@@ -1550,13 +1738,13 @@
   "message.viewed-page": [
     {
       "type": 0,
-      "value": "Viewed page"
+      "value": "已浏览页面"
     }
   ],
   "message.visitor-log": [
     {
       "type": 0,
-      "value": "来自"
+      "value": "来自 "
     },
     {
       "type": 1,
@@ -1564,7 +1752,7 @@
     },
     {
       "type": 0,
-      "value": "的访客在搭载 "
+      "value": " 的访客在搭载 "
     },
     {
       "type": 1,
@@ -1572,7 +1760,7 @@
     },
     {
       "type": 0,
-      "value": " 的"
+      "value": " 的 "
     },
     {
       "type": 1,
@@ -1580,7 +1768,7 @@
     },
     {
       "type": 0,
-      "value": "上使用 "
+      "value": " 上使用 "
     },
     {
       "type": 1,
@@ -1594,7 +1782,7 @@
   "message.visitors-dropped-off": [
     {
       "type": 0,
-      "value": "Visitors dropped off"
+      "value": "访客减少"
     }
   ]
 }
