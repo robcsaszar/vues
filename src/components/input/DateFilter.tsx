@@ -5,6 +5,8 @@ import DatePickerForm from 'components/metrics/DatePickerForm';
 import { useLocale, useMessages } from 'components/hooks';
 import Icons from 'components/icons';
 import { formatDate, parseDateValue } from 'lib/date';
+import styles from './DateFilter.module.css';
+import classNames from 'classnames';
 
 export interface DateFilterProps {
   value: string;
@@ -32,18 +34,14 @@ export function DateFilter({
   const { locale } = useLocale();
 
   const options = [
-    { label: formatMessage(labels.today), value: '1day' },
+    { label: formatMessage(labels.today), value: '0day' },
     {
       label: formatMessage(labels.lastHours, { x: 24 }),
       value: '24hour',
     },
     {
-      label: formatMessage(labels.yesterday),
-      value: '-1day',
-    },
-    {
       label: formatMessage(labels.thisWeek),
-      value: '1week',
+      value: '0week',
       divider: true,
     },
     {
@@ -52,7 +50,7 @@ export function DateFilter({
     },
     {
       label: formatMessage(labels.thisMonth),
-      value: '1month',
+      value: '0month',
       divider: true,
     },
     {
@@ -63,7 +61,15 @@ export function DateFilter({
       label: formatMessage(labels.lastDays, { x: 90 }),
       value: '90day',
     },
-    { label: formatMessage(labels.thisYear), value: '1year' },
+    { label: formatMessage(labels.thisYear), value: '0year', divider: true },
+    {
+      label: formatMessage(labels.lastMonths, { x: 6 }),
+      value: '6month',
+    },
+    {
+      label: formatMessage(labels.lastMonths, { x: 12 }),
+      value: '12month',
+    },
     showAllTime && {
       label: formatMessage(labels.allTime),
       value: 'all',
@@ -113,13 +119,13 @@ export function DateFilter({
       );
     }
 
-    return options.find(e => e.value === value).label;
+    return options.find(e => e.value === value)?.label;
   };
 
   return (
     <>
       <Dropdown
-        className={className}
+        className={classNames(className, styles.dropdown)}
         items={options}
         renderValue={renderValue}
         value={value}
